@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Show</title>
+</head>
+<body>
+    <div>
+        <h1 id="data">Web Application Develoment Training</h1>
+        <button onclick="hide()">Hide</button>
+        <button onclick="show()">Show</button>
+    </div>
+    <script>
+        var flag=true;
+
+        function hide(){
+            flag=false;
+            if(flag==false){
+                document.getElementById("data").style.display="none";
+            }
+        }
+
+        function show(){
+            flag=true;
+            if(flag==true){
+                document.getElementById("data").style.display="block";
+            }
+        }
+    </script>
+</body>
+</html>

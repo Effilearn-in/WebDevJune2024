@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+</head>
+<body>
+    <div>
+        <form action="" onsubmit="handleSubmit()">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email">
+            </div>
+            <div>
+                <label for="gender">Gender</label>
+                <select name="" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="programming_language">Programming Language</label>
+                <select name="" id="programming_language">
+                    <option value="c">C</option>
+                    <option value="cpp">CPP</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                </select>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(){
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var programming_language=document.getElementById("programming_language").value;
+            var gender=document.getElementById("gender").value;
+            var password=document.getElementById("password").value;
+
+            if(name=="" || name==null){
+                alert("Name field is required!!!");
+                return;
+            }
+            else if(email=="" || email==null){
+                alert("Email field is required!!!");
+                return;
+            }
+            else if(programming_language=="" || programming_language==null){
+                alert("Programming language field is required!!!");
+                return;
+            }
+            else if(gender=="" || gender==null){
+                alert("Gender field is required!!!");
+                return;
+            }
+            else if(password=="" || password==null){
+                alert("Password field is required!!!");
+                return;
+            }
+
+            alert("Form is successfully submitted!!!");
+        }
+    </script>
+</body>
+</html>

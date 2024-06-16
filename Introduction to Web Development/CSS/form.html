@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-size: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: white;
+            color: black;
+        }
+
+        form div {
+            margin: 30px;
+        }
+
+        #mydiv {
+            margin: 50px;
+            margin-left: 400px;
+            margin-right: 400px;
+
+            border: 2px solid red;
+            border-radius: 20px;
+            border-width: 20px;
+            border-style: inset;
+
+            animation: borderamimation 4s infinite;
+        }
+
+        @keyframes borderamimation {
+            0% {
+                border-color: red;
+                border-style: inset;
+            }
+
+            10% {
+                border-color: rgb(80, 9, 234);
+                border-style: outset;
+            }
+
+            20% {
+                border-color: rgb(12, 221, 103);
+                border-style: inset;
+            }
+
+            30% {
+                border-color: rgb(190, 236, 9);
+                border-style: outset;
+            }
+
+            40% {
+                border-color: rgb(225, 127, 7);
+                border-style: inset;
+            }
+
+            50% {
+                border-color: rgb(246, 51, 12);
+                border-style: outset;
+            }
+
+            60% {
+                border-color: red;
+                border-style: inset;
+            }
+
+            70% {
+                border-color: rgb(80, 9, 234);
+                border-style: outset;
+            }
+
+            80% {
+                border-color: rgb(12, 221, 103);
+                border-style: inset;
+            }
+
+            90% {
+                border-color: rgb(190, 236, 9);
+                border-style: outset;
+            }
+
+            100% {
+                border-color: rgb(225, 127, 7);
+                border-style: inset;
+            }
+        }
+
+        .myButton {
+            box-shadow: 3px 4px 0px 0px #1564ad;
+            background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+            background-color: #79bbff;
+            border-radius: 5px;
+            border: 1px solid #337bc4;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px 44px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #528ecc;
+        }
+
+        .myButton:hover {
+            background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+            background-color: #378de5;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+    </style>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carme&display=swap");
+
+        svg {
+            font-family: "Carme", sans-serif;
+            width: 100%;
+            height: 100%;
+        }
+
+        svg text {
+            animation: stroke 5s infinite alternate;
+            stroke-width: 2;
+            stroke: #A01C1C;
+            font-size: 100px;
+        }
+
+        @keyframes stroke {
+            0% {
+                fill: rgba(204, 50, 82, 0);
+                stroke: rgba(160, 28, 28, 1);
+                stroke-dashoffset: 25%;
+                stroke-dasharray: 0 50%;
+                stroke-width: 2;
+            }
+
+            70% {
+                fill: rgba(204, 50, 82, 0);
+                stroke: rgba(160, 28, 28, 1);
+            }
+
+            80% {
+                fill: rgba(204, 50, 82, 0);
+                stroke: rgba(160, 28, 28, 1);
+                stroke-width: 3;
+            }
+
+            100% {
+                fill: rgba(204, 50, 82, 1);
+                stroke: rgba(160, 28, 28, 0);
+                stroke-dashoffset: -25%;
+                stroke-dasharray: 50% 0;
+                stroke-width: 0;
+            }
+        }
+
+        .wrapper {
+            background-color: #FEFEFE
+        }
+
+        ;
+    </style>
+
+    <style>
+        .custom_input {
+            display: flex;
+            align-items: center;
+            position: relative;
+            max-width: 100%;
+        }
+
+        .input {
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px 10px;
+            width: 100%;
+            padding-left: 35px;
+            outline: none;
+            background: #FFFFFF;
+            color: #000000;
+            border: 5px solid #C4D1EB;
+            border-radius: 5px;
+            box-shadow: 9px 12px 5px 0px #E2E2E2;
+            transition: .3s ease;
+        }
+
+        .input:focus {
+            background: #F2F2F2;
+            border: 1px solid #5A7EC7;
+            border-radius: 10px;
+        }
+
+        .input::placeholder {
+            color: #5A5A5A;
+        }
+
+        .svg_icon {
+            position: absolute;
+            left: 10px;
+            fill: #4660DC;
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <svg>
+            <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                technicalsurajsahani
+            </text>
+        </svg>
+    </div>
+
+    <div id="mydiv">
+        <form action="">
+            <div>
+                <label for="username">Username</label>
+                <div class="custom_input">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="svg_icon bi-browser-edge" viewBox="0 0 16 16">
+                        <path
+                            d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.838 3.838 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006a.594.594 0 0 1-.043.041Z">
+                        </path>
+                        <path
+                            d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z">
+                        </path>
+                        <path
+                            d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z">
+                        </path>
+                    </svg>
+                    <input class="input" type="text" placeholder="Enter Username">
+                </div>
+
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <div class="custom_input">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="svg_icon bi-browser-edge" viewBox="0 0 16 16">
+                        <path
+                            d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.838 3.838 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006a.594.594 0 0 1-.043.041Z">
+                        </path>
+                        <path
+                            d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z">
+                        </path>
+                        <path
+                            d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z">
+                        </path>
+                    </svg>
+                    <input class="input" type="email" placeholder="Enter Email">
+                </div>
+
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <div class="custom_input">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="svg_icon bi-browser-edge" viewBox="0 0 16 16">
+                        <path
+                            d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.838 3.838 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006a.594.594 0 0 1-.043.041Z">
+                        </path>
+                        <path
+                            d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z">
+                        </path>
+                        <path
+                            d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z">
+                        </path>
+                    </svg>
+                    <input class="input" type="password" placeholder="Enter Password">
+                </div>
+
+            </div>
+            <div>
+                <input class="myButton" type="submit" value="Submit">
+                <input class="myButton" type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

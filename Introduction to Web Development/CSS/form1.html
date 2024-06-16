@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        #mydiv {
+            text-align: center;
+            margin-top: 70px;
+            margin-left: 100px;
+            margin-right: 100px;
+
+            padding-bottom: 30px;
+
+            border-width: 30px;
+            border-style: outset;
+            border-color: red;
+
+            animation-name: borderanimation;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        #btn {
+            border-width: 5px;
+            border-style: outset;
+            border-color: red;
+
+            animation-name: borderanimation;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        .css-input {
+            padding: 11px;
+            font-size: 16px;
+            border-width: 3px;
+            border-color: #1917e4;
+            background-color: #FFFFFF;
+            color: #1a1a1b;
+            border-style: solid;
+            border-radius: 23px;
+            box-shadow: -9px 0px 5px rgba(68, 21, 237, .93);
+            text-shadow: -3px 0px 5px rgba(66, 66, 66, .75);
+        }
+
+        .css-input:focus {
+            outline: none;
+        }
+
+        input {
+            margin-left: 20px;
+            border-width: 5px;
+            border-style: outset;
+            border-color: red;
+
+            animation-name: borderanimation;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        form div {
+            margin: 20px;
+        }
+
+        @keyframes borderanimation {
+            0% {
+                border-style: outset;
+                border-color: red;
+            }
+
+            10% {
+                border-style: inset;
+                border-color: rgb(243, 11, 89);
+            }
+
+            20% {
+                border-style: outset;
+                border-color: rgb(173, 10, 238);
+            }
+
+            30% {
+                border-style: inset;
+                border-color: rgb(68, 9, 229);
+            }
+
+            40% {
+                border-style: outset;
+                border-color: rgb(14, 216, 252);
+            }
+
+            50% {
+                border-style: inset;
+                border-color: rgb(15, 222, 119);
+            }
+
+            60% {
+                border-style: outset;
+                border-color: rgb(11, 210, 37);
+            }
+
+            70% {
+                border-style: inset;
+                border-color: rgb(195, 231, 15);
+            }
+
+            80% {
+                border-style: outset;
+                border-color: rgb(227, 162, 12);
+            }
+
+            90% {
+                border-style: inset;
+                border-color: rgb(196, 75, 4);
+            }
+
+            100% {
+                border-style: outset;
+                border-color: rgb(234, 77, 9);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mydiv">
+
+        <h1>Form</h1>
+
+        <form action="">
+
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" class="css-input">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" class="css-input">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" class="css-input">
+            </div>
+
+            <input id="btn" type="submit" value="Submit">
+            <input id="btn" type="reset" value="Reset">
+        </form>
+    </div>
+</body>
+
+</html>

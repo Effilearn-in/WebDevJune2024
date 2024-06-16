@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table</title>
+    <style>
+        div{
+            
+            margin:100px;
+            margin-left: 250px;
+            margin-right: 300px;
+
+            padding:100px;
+
+            border:30px solid red;
+            border-radius: 20px;
+            border-style: inset;
+
+            animation-name: m;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        table{
+            font-size: 40px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+
+            border-width: 20px;
+
+            animation-name: m;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+
+            animation-name: n;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes n {
+            0%{
+                rotate: 90deg;
+            }
+            50%{
+                rotate: 180deg;
+            }
+            70%{
+                rotate: 270deg;
+            }
+            100%{
+                rotate: 360deg;
+            }
+        }
+
+        @keyframes m {
+            0%{
+                border-color: red;
+                border-style: inset;
+            }
+            10%{
+                border-color: rgb(235, 18, 108);
+                border-style: outset;
+            }
+            20%{
+                border-color: rgb(31, 11, 218);
+                border-style: inset;
+            }
+            30%{
+                border-color: rgb(17, 101, 212);
+                border-style: outset;
+            }
+            40%{
+                border-color: rgb(22, 223, 162);
+                border-style: inset;
+            }
+            50%{
+                border-color: rgb(30, 233, 91);
+                border-style: outset;
+            }
+            60%{
+                border-color: rgb(248, 225, 19);
+                border-style: inset;
+            }
+            70%{
+                border-color: rgb(16, 207, 26);
+                border-style: outset;
+            }
+            80%{
+                border-color: rgb(11, 26, 228);
+                border-style: inset;
+            }
+            90%{
+                border-color: rgb(230, 17, 159);
+                border-style: outset;
+            }
+            100%{
+                border-color: red;
+                border-style: inset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table border>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>A</td>
+                    <td>1k</td>
+                    <td>Development</td>
+                    <td>UI</td>
+                </tr>
+    
+                <tr>
+                    <td>2</td>
+                    <td>B</td>
+                    <td>2k</td>
+                    <td>Development</td>
+                    <td>UI</td>
+                </tr>
+    
+                <tr>
+                    <td>3</td>
+                    <td>C</td>
+                    <td>3k</td>
+                    <td>Development</td>
+                    <td>UI</td>
+                </tr>
+    
+                <tr>
+                    <td>4</td>
+                    <td>D</td>
+                    <td>4k</td>
+                    <td>Development</td>
+                    <td>UI</td>
+                </tr>
+    
+                <tr>
+                    <td>5</td>
+                    <td>E</td>
+                    <td>5k</td>
+                    <td>Development</td>
+                    <td>UI</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+   
+</body>
+</html>
