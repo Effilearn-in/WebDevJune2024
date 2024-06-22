@@ -1,0 +1,39 @@
+(1) Define a class with a private member and a public member function to access the private member.
+
+(2) Create a class representing a 2D point and calculate the distance between two points.
+
+(3) Create a class representing a Circle with member functions to calculate its area and circumference.
+
+(4) Implement a class for a simple Bank Account with deposit and withdraw functions.
+
+(5) Implement a class hierarchy for different shapes (e.g., Circle, Square) with a common base class. Calculate their areas.
+
+(6) Implement a class representing a Student with a constructor and member functions to set and display student details.
+
+(7) Create a class representing a Book with member functions to set and display book details.
+
+(8) Create a class representing a Rectangle with member functions to calculate its area and perimeter.
+
+(9) Implement a class representing a Bank with member functions to add and display account details.
+
+(10) Implement a class hierarchy for different vehicles (e.g., Car, Motorcycle) with a common base class. Calculate their maximum speed.
+
+(11) Implement a class representing a Date with member functions to set and display the date.
+
+(12) Create a class representing a Product with member functions to set and display product details.
+
+(13) Implement a class hierarchy for different animals (e.g., Cat, Dog) with a common base class. Display their sounds.
+
+(14) Create a class hierarchy for different geometric shapes (e.g., Circle, Square) with a common base class. Calculate their areas.
+
+(15) Implement a class hierarchy for different employees (e.g., Manager, Programmer) with a common base class. Calculate their salaries.
+
+(16) Implement a class hierarchy for different shapes (e.g., Circle, Rectangle) with a common base class. Calculate their areas and perimeters.
+
+(17) Create a class representing a Person with member functions to set and display personal details.
+
+(18) Create a class representing a Vehicle with member functions to set and display vehicle details.
+
+(19) Implement a class hierarchy for different accounts (e.g., SavingsAccount, CheckingAccount) with a common base class. Calculate their interest.
+
+(20) Implement a class representing a Computer with member functions to set and display computer details.
