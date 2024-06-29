@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <link rel="stylesheet" href="output.css">
+
+    <style>
+        .nav {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .nav.active {
+            border-bottom: 2px solid #af634c;
+        }
+
+        .nav:not(.active):hover {
+            border-bottom: 2px solid gray;
+        }
+    </style>
+</head>
+
+<body class="bg-[#1C1C1E]">
+
+    <nav class="bg-[#2C2C2E] w-full h-auto px-5 py-4 flex items-center justify-between mb-2">
+        <div id="navUserName" class="flex items-center gap-2">
+
+
+        </div>
+
+        <div class="flex items-center px-5 py-2 bg-transparent border-2 border-gray-500 rounded-full">
+            <input id="input" class="text-white bg-transparent outline-none" type="text" placeholder="Search User">
+            <div id="search" class="px-2 border-l-2 border-gray-500 cursor-pointer">
+                <svg fill="#CDD9E5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                    data-view-component="true" class="octicon octicon-search">
+                    <path
+                        d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="md:grid md:grid-cols-8">
+            <div id="box" class="flex flex-col items-center w-full h-full col-span-2 p-2 bg-[#1C1C1E]">
+
+            </div>
+            <div id="userInformation" class="w-full h-full md:col-span-6 bg-[#2C2C2E] p-5 rounded-l-xl hidden">
+                <div id="userInfo" class="flex items-center justify-center gap-2 mt-5 md:flex md:items-center">
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

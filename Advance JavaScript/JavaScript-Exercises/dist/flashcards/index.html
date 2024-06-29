@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCards</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: auto;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .card {
+            width: 370px;
+            height: 200px;
+            word-wrap: break-word;
+            margin: 10px;
+            background-color: #D1D5DB;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .card h2 {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="w-full h-14 bg-gray-300 flex items-center justify-between px-14 sticky top-0 z-50 shadow-xl">
+        <h1 class="font-semibold text-3xl">FlashCards</h1>
+        <div>
+            <button onclick="showCreateCardBox()" class="bg-gray-500 p-2 rounded-lg text-white font-medium">Create
+                Card</button>
+            <button onclick="delFlashcards()" class="bg-gray-500 p-2 rounded-lg text-white font-medium">Del
+                Cards</button>
+        </div>
+    </nav>
+
+    <div id="creatBox" class=" w-full flex items-center justify-center mt-10">
+        <div class="w-[35%] flex flex-col items-center justify-center bg-gray-300 p-5 rounded-xl shadow-xl">
+            <h1 class="font-semibold text-3xl text-center">Create Flashcards</h1>
+            <div class="flex items-center justify-center flex-col w-full">
+
+                <div class="flex flex-col items-start gap-2 w-full">
+                    <label class="font-medium text-lg" for="question">Question</label>
+                    <textarea id="question" class="bg-white w-full"></textarea>
+                </div>
+
+                <br>
+
+                <div class="flex flex-col items-start gap-2 w-full">
+                    <label class="font-medium text-lg" for="answer">Answer</label>
+                    <textarea id="answer" class="bg-white w-full"></textarea>
+                </div>
+
+                <div class="flex items-start gap-2 w-full mt-5">
+                    <button onclick="addFlashcard()"
+                        class="p-2 rounded-lg text-black font-medium bg-white">Save</button>
+                    <button onclick="hideFlashcard()"
+                        class="p-2 rounded-lg text-black font-medium bg-white">Close</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="cards" class="bg-white w-full h-auto">
+        <!-- <div class="card">
+            <h2></h2>
+        </div> -->
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

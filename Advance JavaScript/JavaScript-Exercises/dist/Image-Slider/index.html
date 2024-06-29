@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        #prev,
+        #next {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center w-full h-screen bg-blue-700">
+
+    <div id="container" class="relative bg-white min-w-[450px] rounded-[8px] p-5 shadow-xl">
+        <div id="images" class="h-full">
+            <img class="w-full h-[500px] object-cover block rounded-[10px]"
+                src="https://images.unsplash.com/photo-1513379733131-47fc74b45fc7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vZGVsfGVufDB8fDB8fHww"
+                class="active">
+            <img class="w-full h-[500px] object-cover hidden rounded-[10px]"
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <img class="w-full h-[500px] object-cover hidden rounded-[10px]"
+                src="https://images.unsplash.com/photo-1562572159-4efc207f5aff?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <img class="w-full h-[500px] object-cover hidden rounded-[10px]"
+                src="https://images.unsplash.com/photo-1549570652-97324981a6fd?q=80&w=1370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        </div>
+        <div class="flex items-center justify-center w-full">
+            <div class="dots" class="w-[120px] mt-5 mx-auto mb-0 flex items-center justify-around">
+                <button onclick="dot(1)"
+                    class="h-3 w-5 border-[3px] border-black rounded-[5px] cursor-pointer bg-transparent"></button>
+                <button onclick="dot(2)"
+                    class="h-3 w-5 border-[3px] border-black rounded-[5px] cursor-pointer bg-transparent"></button>
+                <button onclick="dot(3)"
+                    class="h-3 w-5 border-[3px] border-black rounded-[5px] cursor-pointer bg-transparent"></button>
+                <button onclick="dot(4)"
+                    class="h-3 w-5 border-[3px] border-black rounded-[5px] cursor-pointer bg-transparent"></button>
+            </div>
+        </div>
+
+        <button id="prev" onclick="prev()"
+            class="absolute -left-7 top-2/4 bg-white py-2 px-3 rounded-[10px] font-bold text-xl">&lt;</button>
+        <button id="next" onclick="next()"
+            class="absolute -right-7 top-2/4 bg-white py-2 px-3  rounded-[10px] font-bold text-xl">&gt;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

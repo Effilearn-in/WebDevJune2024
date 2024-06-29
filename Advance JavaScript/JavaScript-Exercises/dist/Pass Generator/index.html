@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="output.css">
+    <style>
+        .pass-indicator::before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 50%;
+            border-radius: inherit;
+            transition: width 0.3s ease;
+        }
+
+        .pass-indicator#weak::before {
+            width: 20%;
+            background: #e64a4a;
+        }
+
+        .pass-indicator#medium::before {
+            width: 50%;
+            background: #f1c80b;
+        }
+
+        .pass-indicator#strong::before {
+            width: 100%;
+            background: #43A047;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-[#43A047]">
+
+    <div class="containerr w-[450px] bg-[#fff] rounded-lg shadow-lg">
+        <h2 class="font-semibold text-xl py-4 px-7  border-b border-[#d4dbe5]">Pass Generator</h2>
+
+        <div class="my-5 wrapper mx-7">
+
+            <div class="relative input-box">
+                <input
+                    class="w-full h-[53px] text-black text-[1.06rem] font-medium rounded tracking-[1.4px] border-[1px] border-[#aaa] py-0 pl-[2.85rem] pr-[1rem]"
+                    type="text" disabled>
+                <span
+                    class="absolute right-[13px] cursor-pointer leading-[53px] text-[#707070] material-symbols-rounded hover:text-[#43A047]">copy_all</span>
+            </div>
+
+            <div class="pass-indicator w-full h-1 relative mt-3 rounded-[25px]"></div>
+
+            <div class="pass-length mt-[1.56rem] mb-[1.25rem]">
+                <div class="flex justify-between details">
+                    <label class="title">Password Length</label>
+                    <span></span>
+                </div>
+                <input type="range" min="1" max="30" value="15" step="1" class="w-full h-[5px]">
+            </div>
+
+            <div class="pass-settings">
+                <label class="title">Pass settings</label>
+                <ul class="flex flex-wrap mt-4 options">
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="lowercase" checked class="w-4 h-4 cursor-pointer">
+                        <label for="lowercase" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Lowercase
+                            (a-z)</label>
+                    </li>
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="uppercase" class="w-4 h-4 cursor-pointer">
+                        <label for="uppercase" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Uppercase
+                            (A-Z)</label>
+                    </li>
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="numbers" class="w-4 h-4 cursor-pointer">
+                        <label for="numbers" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Numbers (0-9)</label>
+                    </li>
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="symbols" class="w-4 h-4 cursor-pointer">
+                        <label for="Symbols" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Symbols (!-$^+)</label>
+                    </li>
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="exc-duplicate" class="w-4 h-4 cursor-pointer">
+                        <label for="exc-duplicate" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Exclude
+                            Duplicate</label>
+                    </li>
+                    <li class="option flex items-center mb-4 w-[calc(100%/2)]">
+                        <input type="checkbox" id="spaces" class="w-4 h-4 cursor-pointer">
+                        <label for="spaces" class="cursor-pointer text-[#4f4f4f] pl-[0.63rem]">Include Spaces</label>
+                    </li>
+                </ul>
+            </div>
+
+
+            <button
+                class="generate-btn w-full text-white border-none outline-none bg-[#43A047] text-[1.06rem] py-[0.94rem] px-0 rounded-[5px] uppercase mt-[0.94rem] mx-0 mb-[1.3rem]">Generate
+                Password
+            </button>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

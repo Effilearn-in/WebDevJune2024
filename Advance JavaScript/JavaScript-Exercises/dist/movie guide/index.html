@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Guide</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="flex items-end w-full h-screen bg-black">
+
+    <div class="w-full bg-yellow-300 h-2/4">
+        <div class="flex flex-col items-center justify-center w-auto h-auto bg-yellow-300">
+            <div class="bg-gray-950 min-w-[700px] flex flex-col gap-3 px-20 py-10 -translate-y-20 rounded-2xl ">
+                <div class="flex items-center w-full h-full gap-3">
+                    <input id="input" type="text" placeholder="Enter a movie name..."
+                        class="w-full py-5 text-lg font-medium text-white bg-transparent border-b-2 border-yellow-300 outline-none">
+                    <button onclick="getMovie()" id="Search-btn"
+                        class="px-5 py-5 text-lg font-semibold text-black bg-yellow-300 rounded-lg">Search</button>
+                </div>
+                <div id="result"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

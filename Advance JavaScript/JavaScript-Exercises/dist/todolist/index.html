@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        ul li {
+            position: relative;
+            list-style: none;
+            font-size: 17px;
+            padding: 12px 8px 12px 50px;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        ul li::before {
+            content: "";
+            position: absolute;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-image: url(/dist/todolist/unchecked.png);
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+
+        ul li.checked {
+            color: #555;
+            text-decoration: line-through;
+        }
+
+        ul li.checked::before {
+            background-image: url(/dist/todolist/checked.png);
+        }
+
+        ul li span {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+            color: #555;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        ul li span:hover {
+            background: #edeef0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w-full h-screen bg-gradient-to-tl from-[#4e085f] to-[#153677] p-10 flex items-center justify-center">
+        <div class="w-auto xl:max-w-[540px] bg-white rounded-xl mb-[20px] px-[30px] pt-[40px] pb-[70px]">
+            <h2 class="flex items-center gap-2 text-2xl font-extrabold text-[#002765]">To-Do List <img width="30"
+                    src="icon.png" alt="">
+            </h2>
+            <div class="flex items-center justify-between bg-[#edeef0] rounded-[30px] pl-5 mt-[25px]">
+                <input class="flex-1 border-none outline-none bg-transparent p-[10px]" type="text" id="inputBox"
+                    placeholder="Add your text">
+                <button onclick="addTask()"
+                    class="border-none outline-none py-4 px-[50px] bg-[#ff5945] text-white text-base cursor-pointer rounded-[40px]">Add</button>
+            </div>
+
+            <ul id="listContainer">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

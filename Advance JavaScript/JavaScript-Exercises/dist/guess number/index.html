@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guess number</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="flex flex-col items-center justify-center w-full h-screen gap-5 bg-gray-300">
+    <div class="flex items-center bg-white rounded-full rounded-l-full w-96 h-11">
+        <input id="input" class="w-full h-full px-5 py-2 rounded-full outline-none" type="number"
+            placeholder="Enter Number Between 1 to 10.">
+        <button id="input-btn" class="h-full px-4 py-2 text-white bg-black rounded-r-full">Submit</button>
+    </div>
+
+    <div class="h-40 p-2 bg-white w-96 rounded-3xl">
+        <h1 id="block" class="flex-wrap hidden p-2 font-sans font-medium bg-gray-300 rounded-full"></h1>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

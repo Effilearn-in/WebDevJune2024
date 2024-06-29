@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="overflow-hidden">
+    <div class="w-full h-screen bg-black">
+        <div class="w-full h-auto px-5 py-10 Calculator">
+            <input class="w-full h-20 px-5 mb-24 text-5xl font-bold text-right text-white bg-transparent outline-none"
+                id="userInput" placeholder="0">
+
+            <div class="flex flex-col gap-2">
+
+                <div class="flex items-center justify-between w-full">
+                    <button id="clear" class="w-20 h-20 text-3xl font-semibold text-red-400 bg-gray-800 rounded-full"
+                        onclick="clear()">C</button>
+                    <button class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full">(
+                        )</button>
+                    <button onclick="press('%')"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full">%</button>
+                    <button onclick="press('/')"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full"><i
+                            class="fa-solid fa-divide"></i>
+                    </button>
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <button onclick="press(7)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">7</button>
+                    <button onclick="press(8)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">8</button>
+                    <button onclick="press(9)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">9</button>
+                    <button onclick="press('*')"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full"><i
+                            class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <button onclick="press(4)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">4</button>
+                    <button onclick="press(5)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">5</button>
+                    <button onclick="press(6)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">6</button>
+                    <button onclick="press('-')"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full"><i
+                            class="fa-solid fa-minus"></i>
+                    </button>
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <button onclick="press(1)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">1</button>
+                    <button onclick="press(2)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">2</button>
+                    <button onclick="press(3)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">3</button>
+                    <button onclick="press('+')"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full"><i
+                            class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <button class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">+/-</button>
+                    <button onclick="press(0)"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">0</button>
+                    <button onclick="press('.')"
+                        class="w-20 h-20 text-3xl font-semibold text-white bg-gray-800 rounded-full">.</button>
+                    <button onclick="equal()"
+                        class="w-20 h-20 text-3xl font-semibold text-green-500 bg-gray-800 rounded-full"><i
+                            class="fa-solid fa-equals"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code | Generater</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        .error {
+            border: 1px solid salmon;
+            animation: shake 0.1s linear 10;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            30% {
+                transform: translateX(-2px);
+            }
+
+            60% {
+                transform: translateX(2px);
+            }
+
+            90% {
+                transform: translateX(-2px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="w-full h-screen flex items-center justify-center bg-violet-950">
+
+    <div class="p-5 rounded-2xl bg-white flex flex-col">
+        <h1 class="font-medium text-lg">Enter your text or URL</h1>
+        <input id="qrText" type="text" placeholder="Text or URL"
+            class="min-w-80 h-11 px-2 rounded-xl mb-5 mt-2 outline-none border-[1px] border-gray-500">
+        <div class="flex gap-4 flex-col items-center justify-center w-full">
+            <img src="" id="qrImage">
+            <div id="qrContainer">
+
+            </div>
+        </div>
+        <button onclick="generateQR()" class="bg-blue-700 text-white font-medium py-2 px-4 rounded-xl mt-5">Generate QR
+            Code
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

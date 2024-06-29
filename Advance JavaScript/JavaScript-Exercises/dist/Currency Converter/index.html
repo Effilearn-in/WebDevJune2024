@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/dist/output.css">
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-300">
+
+    <div id="container" class="w-[900px] p-10 rounded-xl bg-white">
+        <h1 class="text-2xl font-medium text-center">Currency Converter</h1>
+        <form id="conversion-form" class="flex flex-col items-center justify-between w-full">
+            <div class="flex flex-col w-full gap-4 lg:flex-row xl:flex-row">
+
+                <div class="w-full mt-4">
+                    <label for="base-currency" class="text-lg font-medium">From</label>
+                    <select id="base-currency" class="w-full p-3 font-medium bg-gray-200 rounded-xl">
+                        <option value="USD">USD
+                        </option>
+                        <option value="INR">INR</option>
+                        <option value="EUR">EUR</option>
+
+                    </select>
+                </div>
+                <div class="w-full mt-4">
+                    <label for="target-currency" class="text-lg font-medium">To</label>
+                    <select id="target-currency" class="w-full p-3 font-medium bg-gray-200 rounded-xl">
+                        <option value="USD">USD</option>
+                        <option value="INR">INR</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                </div>
+                <div class="flex flex-col w-full mt-4">
+                    <label id="amounts" class="text-lg font-medium">Amount</label>
+                    <input id="amount" type="number" placeholder="Enter amount" required
+                        class="w-full p-3 font-medium bg-gray-200 rounded-xl">
+                </div>
+
+            </div>
+            <div class="flex items-center justify-between w-full gap-4 mt-4">
+                <div id="result">
+
+                </div>
+                <div>
+                    <button type="submit" class="w-full p-3 mt-4 text-white bg-blue-500 rounded-xl">Convert</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
