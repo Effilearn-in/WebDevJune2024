@@ -18,4 +18,5 @@ function generateQR() {
             qrText.classList.remove("error")
         }, 1000)
     }
+
 }
