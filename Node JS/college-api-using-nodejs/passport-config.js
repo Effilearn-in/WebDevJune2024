@@ -12,7 +12,7 @@ const users = [
         username: "amitsahani",
         password: "amitsahani"
     }
-]
+]  
 
 passport.use(new LocalStrategy((username, password, done) => {
 
@@ -29,13 +29,13 @@ passport.use(new LocalStrategy((username, password, done) => {
     return done(null, user);
 }));
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
+// passport.serializeUser((user, done) => {
+//     done(null, user.id);
+//   });
   
-  passport.deserializeUser((id, done) => {
-    const user = users.find(u => u.id === id);
-    done(null, user);
-  });
+//   passport.deserializeUser((id, done) => {
+//     const user = users.find(u => u.id === id);
+//     done(null, user);
+//   });
 
 module.exports = passport;

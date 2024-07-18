@@ -9,6 +9,7 @@
   "author": "Suraj Sahani",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "passport": "^0.7.0",
