@@ -1,15 +1,35 @@
 const express = require('express');
-const app = express();
+const passport = require('./passport-config');
+const session = require('express-session');
+
 const port = 4000;
+const app = express();
 
 app.use(express.json());
 
-const requestLogger=(request,response,next)=>{
-    console.log(`${request.method} : ${request.url}`);
-    next();
-}
+const requestLogger = (request, response, next) => {
+  console.log(`${request.method} : ${request.url}`);
+  next();
+};
+
+// Middleware to protect routes
+const isAuthenticated = (request, response, next) => {
+  if (request.isAuthenticated()) {
+    return next();
+  }
+  response.redirect('/login');
+};
 
 app.use(requestLogger);
+
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const colleges = [
   {
@@ -28,12 +48,20 @@ app.get('/', (req, res) => {
   res.send('Welcome to the College API');
 });
 
-// Get all colleges
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/colleges', // Redirect to the GET /colleges route on success
+  failureRedirect: '/login'
+}));
+
+app.get('/login', (request, response) => {
+  response.send('Login Page');
+});
+
+// Apply isAuthenticated middleware to protect these routes
 app.get('/colleges', (req, res) => {
   res.json(colleges);
 });
 
-// Get a specific college by ID
 app.get('/colleges/:id', (req, res) => {
   const college = colleges.find(c => c.id === parseInt(req.params.id));
   if (!college) {
@@ -42,8 +70,7 @@ app.get('/colleges/:id', (req, res) => {
   res.json(college);
 });
 
-// Create a new college (for demonstration; in practice, data is static)
-app.post('/colleges', (req, res) => {
+app.post('/colleges', isAuthenticated, (req, res) => {
   const newCollege = {
     id: colleges.length + 1,
     name: req.body.name,
@@ -53,8 +80,7 @@ app.post('/colleges', (req, res) => {
   res.status(201).json(newCollege);
 });
 
-// Update a college by ID
-app.put('/colleges/:id', (req, res) => {
+app.put('/colleges/:id', isAuthenticated, (req, res) => {
   const college = colleges.find(c => c.id === parseInt(req.params.id));
   if (!college) {
     return res.status(404).send('College not found');
@@ -64,8 +90,7 @@ app.put('/colleges/:id', (req, res) => {
   res.json(college);
 });
 
-// Delete a college by ID
-app.delete('/colleges/:id', (req, res) => {
+app.delete('/colleges/:id', isAuthenticated, (req, res) => {
   const collegeIndex = colleges.findIndex(c => c.id === parseInt(req.params.id));
   if (collegeIndex === -1) {
     return res.status(404).send('College not found');
