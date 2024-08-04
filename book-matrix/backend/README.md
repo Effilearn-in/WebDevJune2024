@@ -1,2 +1,2 @@
-# lms-api-using-nodejs
+# lms-backend
 Library Management System API 
