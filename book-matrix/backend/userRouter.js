@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const authMiddleware = require('./middlewares/authMiddleware');
 require('dotenv').config();
 
 const router = express.Router();
@@ -51,28 +52,32 @@ router.post('/login', async (request, response) => {
         // Check if the user exists
         const user = await User.findOne({ username });
         if (!user) {
-            return response.status(400).json({ message: "Invalid username or password" });
+            return response.status(400).json({ message: "Invalid Username" });
         }
 
         // Compare the password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return response.status(400).json({ message: "Invalid username or password" });
+            return response.status(400).json({ message: "Invalid Password" });
         }
 
         // Generate a token
-        const token = jwt.sign({ userId: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign(
+            { userId: user._id, username: user.username, userType: user.userType },
+            "surajsahani",
+            { expiresIn: '1h' }
+        );
 
-        response.status(200).json({ token });
+        response.status(200).json({ token: token });
     } catch (error) {
         response.status(500).json({ message: error.message });
     }
 });
 
 // Get user info by username
-router.get('/:username', async (request, response) => {
+router.get('/:username', authMiddleware, async (request, response) => {
     try {
-        const user = await User.findOne({ username: request.params.username });
+        const user = await User.findOne({ username: request.params.username }).select('-password');
         if (!user) {
             return response.status(404).json({ message: "User not found" });
         }
@@ -82,5 +87,15 @@ router.get('/:username', async (request, response) => {
         response.status(500).json({ message: error.message });
     }
 });
+
+router.get('/',  async (request, response) => {
+    try {
+        const students = await User.find({userType:"Student"});
+        response.status(200).json(students);
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    }
+});
+
 
 module.exports = router;

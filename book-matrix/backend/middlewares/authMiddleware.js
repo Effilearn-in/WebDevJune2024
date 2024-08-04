@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (request, response, next) => {
+
     const token = request.header('x-auth-token');
 
     if (!token) {
@@ -8,7 +9,7 @@ const authMiddleware = (request, response, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, "techsurajsahani");
+        const decoded = jwt.verify(token, "surajsahani");
         request.user = decoded;
         next();
     } catch (error) {

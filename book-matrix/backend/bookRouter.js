@@ -5,7 +5,7 @@ const authMiddleware = require('./middlewares/authMiddleware');
 const router = express.Router();
 
 // Get all books
-router.get('/', async (request, response) => {
+router.get('/', authMiddleware, async (request, response) => {
     try {
         const books = await Book.find({});
         response.status(200).json(books);
@@ -15,7 +15,7 @@ router.get('/', async (request, response) => {
 });
 
 // Get a book by ID
-router.get('/:id', async (request, response) => {
+router.get('/:id', authMiddleware, async (request, response) => {
     try {
         const book = await Book.findById(request.params.id);
         if (!book) {
@@ -31,8 +31,8 @@ router.get('/:id', async (request, response) => {
 router.post('/', authMiddleware, async (request, response) => {
     try {
         const user = await User.findById(request.user.userId);
-        if (user.userType == 'Student') {
-            return response.status(404).json({ message: "You are not authorized user to access this api" });
+        if (user.userType === 'Student') {
+            return response.status(403).json({ message: "You are not authorized to access this API" });
         }
         const book = new Book(request.body);
         await book.save();
@@ -45,6 +45,10 @@ router.post('/', authMiddleware, async (request, response) => {
 // Update a book by ID
 router.put('/:id', authMiddleware, async (request, response) => {
     try {
+        const user = await User.findById(request.user.userId);
+        if (user.userType === 'Student') {
+            return response.status(403).json({ message: "You are not authorized to access this API" });
+        }
         const book = await Book.findByIdAndUpdate(request.params.id, request.body, { new: true });
         if (!book) {
             return response.status(404).json({ message: "Book not found" });
@@ -58,6 +62,10 @@ router.put('/:id', authMiddleware, async (request, response) => {
 // Delete a book by ID
 router.delete('/:id', authMiddleware, async (request, response) => {
     try {
+        const user = await User.findById(request.user.userId);
+        if (user.userType === 'Student') {
+            return response.status(403).json({ message: "You are not authorized to access this API" });
+        }
         const book = await Book.findByIdAndDelete(request.params.id);
         if (!book) {
             return response.status(404).json({ message: "Book not found" });

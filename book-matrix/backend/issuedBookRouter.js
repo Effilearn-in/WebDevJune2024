@@ -5,7 +5,7 @@ const authMiddleware = require('./middlewares/authMiddleware');
 const router = express.Router();
 
 // Issue a book
-router.post('/issue-book',authMiddleware, async (request, response) => {
+router.post('/issue-book', authMiddleware, async (request, response) => {
     try {
         const { studentId, studentName, bookId, bookName, issuedDate, returnDate } = request.body;
 
@@ -44,7 +44,7 @@ router.post('/issue-book',authMiddleware, async (request, response) => {
 });
 
 // Return a book
-router.post('/return-book/:id',authMiddleware, async (request, response) => {
+router.post('/return-book/:id', authMiddleware, async (request, response) => {
     try {
         const { id } = request.params;
 
