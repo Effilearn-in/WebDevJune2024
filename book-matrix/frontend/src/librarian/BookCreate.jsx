@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const BookCreate = () => {
@@ -36,30 +35,95 @@ const BookCreate = () => {
         body: JSON.stringify(book)
       });
 
-      navigate('/librarian-panel');
+      if (response.ok) {
+        navigate('/librarian-panel');
+      } else {
+        console.error('Error creating book:', await response.json());
+      }
     } catch (error) {
       console.error('Error creating book:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create Book</h2>
-      <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-      <input type="text" name="author" placeholder="Author" onChange={handleChange} />
-      <input type="text" name="publisher" placeholder="Publisher" onChange={handleChange} />
-      <input type="text" name="image" placeholder="Image URL" onChange={handleChange} />
-      <input type="number" name="quantity" placeholder="Quantity" onChange={handleChange} />
-      <select name="category" onChange={handleChange}>
-        <option value="FYIT">FYIT</option>
-        <option value="SYIT">SYIT</option>
-        <option value="TYIT">TYIT</option>
-        <option value="FYCS">FYCS</option>
-        <option value="SYCS">SYCS</option>
-        <option value="TYCS">TYCS</option>
-      </select>
-      <button type="submit">Create</button>
-    </form>
+    <div className="container mt-5">
+      <h2 className="mb-4">Create Book</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            name="name"
+            placeholder="Book Name"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">Author</label>
+          <input
+            type="text"
+            className="form-control"
+            id="author"
+            name="author"
+            placeholder="Author"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="publisher" className="form-label">Publisher</label>
+          <input
+            type="text"
+            className="form-control"
+            id="publisher"
+            name="publisher"
+            placeholder="Publisher"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">Image URL</label>
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            name="image"
+            placeholder="Image URL"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="quantity" className="form-label">Quantity</label>
+          <input
+            type="number"
+            className="form-control"
+            id="quantity"
+            name="quantity"
+            placeholder="Quantity"
+            min="1"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">Category</label>
+          <select
+            className="form-select"
+            id="category"
+            name="category"
+            onChange={handleChange}
+          >
+            <option value="FYIT">FYIT</option>
+            <option value="SYIT">SYIT</option>
+            <option value="TYIT">TYIT</option>
+            <option value="FYCS">FYCS</option>
+            <option value="SYCS">SYCS</option>
+            <option value="TYCS">TYCS</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">Create</button>
+      </form>
+    </div>
   );
 };
 

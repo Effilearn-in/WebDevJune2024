@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Book = () => {
   const [books, setBooks] = useState([]);
@@ -14,6 +12,7 @@ const Book = () => {
         const token = localStorage.getItem('token');
         if (!token) {
           navigate('/login');
+          return;
         }
 
         const response = await fetch('http://localhost:4000/book', {
@@ -26,10 +25,7 @@ const Book = () => {
 
         const data = await response.json();
 
-        if (data.message === 'No token, authorization denied') {
-          alert(data.message);
-          return;
-        } else if (data.message === 'Token is not valid') {
+        if (data.message === 'No token, authorization denied' || data.message === 'Token is not valid') {
           alert(data.message);
           return;
         }
@@ -41,8 +37,7 @@ const Book = () => {
     };
 
     fetchBooks();
-  }, []);
-
+  }, [navigate]);
 
   const filteredBooks = books.filter(book =>
     book.name.toLowerCase().includes(search.toLowerCase())
@@ -52,7 +47,8 @@ const Book = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
-          navigate('/login');
+        navigate('/login');
+        return;
       }
 
       const response = await fetch(`http://localhost:4000/book/${id}`, {
@@ -63,28 +59,45 @@ const Book = () => {
         }
       });
 
-      setBooks(books.filter(book => book._id !== id));
+      if (response.ok) {
+        setBooks(books.filter(book => book._id !== id));
+      } else {
+        const errorData = await response.json();
+        console.error('Error deleting book:', errorData.message);
+      }
     } catch (error) {
       console.error('Error deleting book:', error);
     }
   };
 
   return (
-    <div>
-      <h2>Books</h2>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <Link to="/librarian-panel/book-create">Create New Book</Link>
-      <ul>
+    <div className="container mt-5">
+      <h2 className="mb-4">Books</h2>
+      <div className="mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      <Link to="/librarian-panel/book-create" className="btn btn-primary mb-3">Create New Book</Link>
+      <ul className="list-group">
         {filteredBooks.map(book => (
-          <li key={book._id}>
+          <li key={book._id} className="list-group-item d-flex justify-content-between align-items-center">
             {book.name} by {book.author}
-            <button onClick={() => handleDelete(book._id)}>Delete</button>
-            <Link to={`/librarian-panel/book-update/${book._id}`}>Update</Link>
+            <div>
+              <button
+                className="btn btn-danger btn-sm me-2"
+                onClick={() => handleDelete(book._id)}
+              >
+                Delete
+              </button>
+              <Link to={`/librarian-panel/book-update/${book._id}`} className="btn btn-warning btn-sm">
+                Update
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

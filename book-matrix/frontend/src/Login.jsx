@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from 'jwt-decode';  // Make sure you have jwt-decode installed
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -32,9 +31,12 @@ const Login = () => {
         return;
       }
 
-      localStorage.setItem('token', data.token);
-
       const user = jwtDecode(data.token);
+
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('username', user.username);
+      localStorage.setItem('userType', user.userType);
+
       if (user.userType === 'Student') {
         navigate('/student-panel');
       } else {
@@ -42,16 +44,39 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Login error:', error);
+      alert('An error occurred during login. Please try again.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-      <button type="submit">Login</button>
-    </form>
+    <div className="container mt-5">
+      <form onSubmit={handleSubmit} className="row g-3">
+        <h2 className="mb-4">Login</h2>
+        <div className="col-md-6">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="form-control"
+            value={credentials.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="form-control"
+            value={credentials.password}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-12">
+          <button type="submit" className="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

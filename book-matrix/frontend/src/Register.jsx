@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -47,17 +46,65 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-      <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-      <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-      <select name="userType" onChange={handleChange}>
-        <option value="Student">Student</option>
-      </select>
-      <button type="submit">Register</button>
-    </form>
+    <div className="container mt-5">
+      <form onSubmit={handleSubmit} className="row g-3">
+        <h2 className="mb-4">Register</h2>
+        <div className="col-md-6">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            className="form-control"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="form-control"
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="form-control"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="form-control"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <select
+            name="userType"
+            className="form-select"
+            value={formData.userType}
+            onChange={handleChange}
+          >
+            <option value="Student">Student</option>
+            {/* You can add more options here if needed */}
+          </select>
+        </div>
+        <div className="col-md-12">
+          <button type="submit" className="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -45,19 +45,43 @@ const Student = () => {
   ) : [];
 
   return (
-    <div>
-      <h2>Students</h2>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <ul>
-        {filteredStudents.map(student => (
-          <li key={student._id}>{student._id} :- {student.name} - {student.email}</li>
-        ))}
-      </ul>
+    <div className="container mt-5">
+      <h2 className="mb-4">Students</h2>
+      <div className="mb-4">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      <div className="table-responsive">
+        <table className="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredStudents.length > 0 ? (
+              filteredStudents.map(student => (
+                <tr key={student._id}>
+                  <td>{student._id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="3" className="text-center">No students found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

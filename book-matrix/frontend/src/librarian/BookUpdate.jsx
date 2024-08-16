@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const BookUpdate = () => {
@@ -13,6 +12,7 @@ const BookUpdate = () => {
         const token = localStorage.getItem('token');
         if (!token) {
           navigate('/login');
+          return;
         }
 
         const response = await fetch(`http://localhost:4000/book/${id}`, {
@@ -31,7 +31,7 @@ const BookUpdate = () => {
     };
 
     fetchBook();
-  }, [id]);
+  }, [id, navigate]);
 
   const handleChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
@@ -43,6 +43,7 @@ const BookUpdate = () => {
       const token = localStorage.getItem('token');
       if (!token) {
         navigate('/login');
+        return;
       }
 
       const response = await fetch(`http://localhost:4000/book/${id}`, {
@@ -54,30 +55,101 @@ const BookUpdate = () => {
         body: JSON.stringify(book)
       });
 
-      navigate('/librarian-panel');
+      if (response.ok) {
+        navigate('/librarian-panel');
+      } else {
+        console.error('Error updating book:', await response.json());
+      }
     } catch (error) {
       console.error('Error updating book:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Update Book</h2>
-      <input type="text" name="name" value={book.name || ''} onChange={handleChange} />
-      <input type="text" name="author" value={book.author || ''} onChange={handleChange} />
-      <input type="text" name="publisher" value={book.publisher || ''} onChange={handleChange} />
-      <input type="text" name="image" value={book.image || ''} onChange={handleChange} />
-      <input type="number" name="quantity" value={book.quantity || ''} onChange={handleChange} />
-      <select name="category" value={book.category || ''} onChange={handleChange}>
-        <option value="FYIT">FYIT</option>
-        <option value="SYIT">SYIT</option>
-        <option value="TYIT">TYIT</option>
-        <option value="FYCS">FYCS</option>
-        <option value="SYCS">SYCS</option>
-        <option value="TYCS">TYCS</option>
-      </select>
-      <button type="submit">Update</button>
-    </form>
+    <div className="container mt-5">
+      <h2 className="mb-4">Update Book</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            name="name"
+            value={book.name || ''}
+            onChange={handleChange}
+            placeholder="Book Name"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">Author</label>
+          <input
+            type="text"
+            className="form-control"
+            id="author"
+            name="author"
+            value={book.author || ''}
+            onChange={handleChange}
+            placeholder="Author"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="publisher" className="form-label">Publisher</label>
+          <input
+            type="text"
+            className="form-control"
+            id="publisher"
+            name="publisher"
+            value={book.publisher || ''}
+            onChange={handleChange}
+            placeholder="Publisher"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">Image URL</label>
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            name="image"
+            value={book.image || ''}
+            onChange={handleChange}
+            placeholder="Image URL"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="quantity" className="form-label">Quantity</label>
+          <input
+            type="number"
+            className="form-control"
+            id="quantity"
+            name="quantity"
+            value={book.quantity || ''}
+            onChange={handleChange}
+            placeholder="Quantity"
+            min="1"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">Category</label>
+          <select
+            className="form-select"
+            id="category"
+            name="category"
+            value={book.category || ''}
+            onChange={handleChange}
+          >
+            <option value="FYIT">FYIT</option>
+            <option value="SYIT">SYIT</option>
+            <option value="TYIT">TYIT</option>
+            <option value="FYCS">FYCS</option>
+            <option value="SYCS">SYCS</option>
+            <option value="TYCS">TYCS</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">Update</button>
+      </form>
+    </div>
   );
 };
 

@@ -44,7 +44,7 @@ router.post('/issue-book', authMiddleware, async (request, response) => {
 });
 
 // Return a book
-router.post('/return-book/:id', authMiddleware, async (request, response) => {
+router.put('/return-book/:id', authMiddleware, async (request, response) => {
     try {
         const { id } = request.params;
 

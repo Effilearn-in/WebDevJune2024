@@ -13,13 +13,17 @@ import StudentUpdate from './librarian/StudentUpdate';
 import IssuedBook from './librarian/IssuedBook';
 import IssuedBookCreate from './librarian/IssuedBookCreate';
 import IssuedBookUpdate from './librarian/IssuedBookUpdate';
+import Navbar from './Navbar';
+import Profile from './Profile';
 
 const App = () => (
   <Router>
+    <Navbar></Navbar>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<Profile />} />
       {/* Student Panel Routes */}
       <Route path="/student-panel" element={<Book />} />
       {/* Librarian Panel Routes */}

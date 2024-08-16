@@ -88,9 +88,30 @@ router.get('/:username', authMiddleware, async (request, response) => {
     }
 });
 
-router.get('/',  async (request, response) => {
+// Route to update user profile
+router.put('/edit-profile', authMiddleware, async (req, res) => {
     try {
-        const students = await User.find({userType:"Student"});
+        const userId = req.user.userId;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            req.body,
+            { new: true, runValidators: true }
+        ).select('-password');
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({message:"Profile updated successfully"});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.get('/', async (request, response) => {
+    try {
+        const students = await User.find({ userType: "Student" });
         response.status(200).json(students);
     } catch (error) {
         response.status(500).json({ message: error.message });
