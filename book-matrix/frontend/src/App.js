@@ -15,6 +15,7 @@ import IssuedBookCreate from './librarian/IssuedBookCreate';
 import IssuedBookUpdate from './librarian/IssuedBookUpdate';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import { ContactUs } from './student/ContactUs';
 
 const App = () => (
   <Router>
@@ -26,6 +27,7 @@ const App = () => (
       <Route path="/profile" element={<Profile />} />
       {/* Student Panel Routes */}
       <Route path="/student-panel" element={<Book />} />
+      <Route path="/student-panel/contact-us" element={<ContactUs></ContactUs>} />
       {/* Librarian Panel Routes */}
       <Route path="/librarian-panel" element={<LBook />} />
       <Route path="/librarian-panel/book-create" element={<BookCreate />} />

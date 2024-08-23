@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Book = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');
+  const [searchOption, setSearchOption] = useState('name');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Book = () => {
   }, [navigate]);
 
   const filteredBooks = books.filter(book =>
-    book.name.toLowerCase().includes(search.toLowerCase())
+    book[searchOption].toString().toLowerCase().includes(search.toLowerCase())
   );
 
   const handleDelete = async (id) => {
@@ -74,33 +75,63 @@ const Book = () => {
     <div className="container mt-5">
       <h2 className="mb-4">Books</h2>
       <div className="mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <select 
+              className="form-select" 
+              value={searchOption} 
+              onChange={(e) => setSearchOption(e.target.value)}
+            >
+              <option value="name">Name</option>
+              <option value="author">Author</option>
+              <option value="quantity">Quantity</option>
+              <option value="category">Category</option>
+            </select>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder={`Search by ${searchOption}...`}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
       <Link to="/librarian-panel/book-create" className="btn btn-primary mb-3">Create New Book</Link>
-      <ul className="list-group">
-        {filteredBooks.map(book => (
-          <li key={book._id} className="list-group-item d-flex justify-content-between align-items-center">
-            {book.name} by {book.author}
-            <div>
-              <button
-                className="btn btn-danger btn-sm me-2"
-                onClick={() => handleDelete(book._id)}
-              >
-                Delete
-              </button>
-              <Link to={`/librarian-panel/book-update/${book._id}`} className="btn btn-warning btn-sm">
-                Update
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <table className="table table-bordered table-hover">
+        <thead className="thead-light">
+          <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredBooks.map(book => (
+            <tr key={book._id}>
+              <td>{book.name}</td>
+              <td>{book.author}</td>
+              <td>{book.publisher}</td>
+              <td>{book.quantity}</td>
+              <td>{book.category}</td>
+              <td>
+                <button
+                  className="btn btn-danger btn-sm me-2"
+                  onClick={() => handleDelete(book._id)}
+                >
+                  Delete
+                </button>
+                <Link to={`/librarian-panel/book-update/${book._id}`} className="btn btn-warning btn-sm">
+                  Update
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

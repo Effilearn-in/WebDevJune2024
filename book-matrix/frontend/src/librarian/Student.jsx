@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Student = () => {
   const [students, setStudents] = useState([]);
   const [search, setSearch] = useState('');
+  const [searchOption, setSearchOption] = useState('name');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,20 +42,33 @@ const Student = () => {
   }, [navigate]);
 
   const filteredStudents = Array.isArray(students) ? students.filter(student =>
-    student.name.toLowerCase().includes(search.toLowerCase())
+    student[searchOption].toLowerCase().includes(search.toLowerCase())
   ) : [];
 
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Students</h2>
       <div className="mb-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <select 
+              className="form-select" 
+              value={searchOption} 
+              onChange={(e) => setSearchOption(e.target.value)}
+            >
+              <option value="name">Name</option>
+              <option value="email">Email</option>
+              {/* Add other search options as needed */}
+            </select>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder={`Search by ${searchOption}...`}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
       <div className="table-responsive">
         <table className="table table-bordered table-hover">

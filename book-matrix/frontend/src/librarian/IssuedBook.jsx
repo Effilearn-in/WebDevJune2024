@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const IssuedBook = () => {
   const [issuedBooks, setIssuedBooks] = useState([]);
   const [search, setSearch] = useState('');
+  const [searchOption, setSearchOption] = useState('bookName');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const IssuedBook = () => {
   }, [navigate]);
 
   const filteredIssuedBooks = issuedBooks.filter(issuedBook =>
-    issuedBook.bookName.toLowerCase().includes(search.toLowerCase())
+    issuedBook[searchOption].toLowerCase().includes(search.toLowerCase())
   );
 
   const handleReturn = (issuedBookId) => {
@@ -44,13 +45,25 @@ const IssuedBook = () => {
   return (
     <div className="container mt-5">
       <h2>Issued Books</h2>
-      <input
-        type="text"
-        className="form-control my-3"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="input-group mb-3">
+        <select 
+          className="form-select" 
+          value={searchOption} 
+          onChange={(e) => setSearchOption(e.target.value)}
+        >
+          <option value="bookName">Book Name</option>
+          <option value="studentName">Student Name</option>
+          <option value="status">Status</option>
+          {/* Add other search options as needed */}
+        </select>
+        <input
+          type="text"
+          className="form-control"
+          placeholder={`Search by ${searchOption}...`}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
